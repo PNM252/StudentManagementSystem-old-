@@ -7,13 +7,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="STUDENTS")
+@Table(name = "STUDENTS")
 public class Student {
 
 	@Id
-	@Column(name = "ID")
+	@Column(name = "STUDENT_ID")
 	@GeneratedValue
-	private Integer id;
+	private Integer studentID;
 
 	@Column(name = "FIRSTNAME")
 	private String firstname;
@@ -27,12 +27,12 @@ public class Student {
 	@Column(name = "DATEOFADMISSION")
 	private String dateofadmission;
 
-	public Integer getId() {
-		return id;
+	public Integer getStudentID() {
+		return studentID;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setStudentID(Integer studentID) {
+		this.studentID = studentID;
 	}
 
 	public String getFirstname() {
@@ -67,7 +67,6 @@ public class Student {
 		this.dateofadmission = dateofadmission;
 	}
 
-
 	// Getters and setters
-	
+
 }

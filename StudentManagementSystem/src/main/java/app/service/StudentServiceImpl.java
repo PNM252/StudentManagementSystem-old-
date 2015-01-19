@@ -27,8 +27,8 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Transactional
-	public void removeStudent(int id) {
-		studentDAO.removeStudent(id);
+	public void removeStudent(int studentID) {
+		studentDAO.removeStudent(studentID);
 	}
 
 	@Transactional
@@ -37,8 +37,8 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Transactional
-	public Student getStudent(int id) {
-		return studentDAO.getStudent(id);
+	public Student getStudent(int studentID) {
+		return studentDAO.getStudent(studentID);
 	}
 
 }

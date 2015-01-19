@@ -10,9 +10,9 @@ public interface StudentService {
 
 	public List<Student> listStudent();
 
-	public void removeStudent(int id);
+	public void removeStudent(int studentID);
 	
 	public void editStudent(Student student);
 	
-	public Student getStudent(int id);
+	public Student getStudent(int studentID);
 }

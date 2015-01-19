@@ -13,6 +13,7 @@
 table, th, td {
 	border: 1px solid black;
 	border-collapse: collapse;
+	
 }
 
 table tr:nth-child(even) {
@@ -26,10 +27,12 @@ table tr:nth-child(odd) {
 table th {
 	background-color: gray;
 	color: black;
+	
 }
 
 #td1 {
 	width: 1px;
+	
 }
 </style>
 <body>
@@ -38,45 +41,34 @@ table th {
 	<br>
 	<a href="<c:url value="/TitlePage" />">На главную</a>
 
-
 	<h1 align="center">Система управления студентами и их
 		успеваемостью</h1>
 
 	<table align="center">
 		<tr align="center">
-			<td><form action="">
-					<input type="submit" value="Посмотреть успеваемость студента"
-						style="height: 28px; width: 280px">
-				</form></td>
-			<td><form action="StudentCreating">
-					<input type="submit" value="Создать студента"
-						style="height: 28px; width: 280px">
+			<td><form action="DisciplineCreating">
+					<input type="submit" value="Создать димциплину">
 				</form></td>
 		</tr>
 	</table>
 
-	<h3 align="center">Студенты</h3>
-	<c:if test="${!empty studentList}">
-		<table class="data" border="1" style="width: 50%" align="center">
+	<h3 align="center">Дисциплины</h3>
+	<c:if test="${!empty disciplineList}">
+		<table class="data" style="width: 50%" align="center">
 			<tr>
-				<th>Имя</th>
-				<th>Фамилия</th>
-				<th>Группа</th>
-				<th>Дата Поступления</th>
-				<th colspan="2">Действие</th>
+				<th>Наименование дисциплины</th>
+				<th colspan= "2">Действие</th>
 			</tr>
-			<c:forEach items="${studentList}" var="student">
+			<c:forEach items="${disciplineList}" var="discipline">
 				<tr>
-					<td>${student.firstname}</td>
-					<td>${student.lastname}</td>
-					<td>${student.studentgroup}</td>
-					<td>${student.dateofadmission}</td>
+					<td>${discipline.disciplinename}</td>
 					<td id="td1"><form
-							action="/StudentManagementSystem/editStudent
-					/${student.studentID}">
+							action="/StudentManagementSystem/editDiscipline
+					/${discipline.disciplineID}">
 							<input type="submit" value="Редактировать">
 						</form></td>
-					<td id="td1"><form action="deleteStudent/${student.studentID}">
+					<td id="td1"><form
+							action="deleteDiscipline/${discipline.disciplineID}">
 							<input type="submit" value="Удалить">
 						</form></td>
 				</tr>

@@ -11,32 +11,22 @@
 </head>
 <body>
 
-	<a href="<c:url value="/logout" />"> Выйти из приложения </a><br>
+	<a href="<c:url value="/logout" />"> Выйти из приложения </a>
+	<br>
 	<a href="<c:url value="/TitlePage" />">На главную</a>
 
 	<h1 align="center">Система управления студентами и их
 		успеваемостью</h1>
 
-	<form:form commandName="student" action="/StudentManagementSystem/saveStudent"
-		method="POST">
+	<form:form commandName="discipline"
+		action="/StudentManagementSystem/saveDiscipline" method="POST">
 
 		<table align="center">
 
 			<tr>
-				<td><form:label path="firstname">Имя</form:label></td>
-				<td><form:hidden path="studentID" /> <form:input path="firstname" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="lastname">Фамилия</form:label></td>
-				<td><form:input path="lastname" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="studentgroup">Группа</form:label></td>
-				<td><form:input path="studentgroup" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="dateofadmission">Дата Поступления</form:label></td>
-				<td><form:input path="dateofadmission" /></td>
+				<td><form:label path="disciplinename">Наименование дисциплины</form:label></td>
+				<td><form:hidden path="disciplineID" /> <form:input
+						path="disciplinename" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Сохранить"></input></td>

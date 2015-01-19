@@ -7,5 +7,7 @@
 	<session-factory>
 		<mapping class="app.domain.Student" />
 		<mapping class="app.domain.Discipline"/>
+		<mapping class="app.domain.Term"/>
+<!-- 		<mapping class="app.domain.Score"/> -->
 	</session-factory>
 </hibernate-configuration>

@@ -11,12 +11,13 @@
 </head>
 <body>
 
-	<a href="<c:url value="/logout" />"> Выйти из приложения </a>
+	<a href="<c:url value="/logout" />"> Выйти из приложения </a><br>
+	<a href="<c:url value="/TitlePage" />">На главную</a>
 
 	<h1 align="center">Система управления студентами и их
 		успеваемостью</h1>
 
-	<form:form method="post" action="add" commandName="student">
+	<form:form method="post" action="addStudent" commandName="student">
 
 		<table align="center">
 			<tr>

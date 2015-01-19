@@ -12,7 +12,7 @@ public interface StudentDAO {
 	
 	public void editStudent(Student student);
 
-	public void removeStudent(int id);
+	public void removeStudent(int studentID);
 	
-	public Student getStudent(int id);
+	public Student getStudent(int studentID);
 }

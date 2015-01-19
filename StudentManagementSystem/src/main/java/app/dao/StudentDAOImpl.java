@@ -25,9 +25,9 @@ public class StudentDAOImpl implements StudentDAO {
 				.list();
 	}
 
-	public void removeStudent(int id) {
+	public void removeStudent(int studentID) {
 		Student student = (Student) sessionFactory.getCurrentSession().load(
-				Student.class, id);
+				Student.class, studentID);
 		if (null != student) {
 			sessionFactory.getCurrentSession().delete(student);
 		}
@@ -38,9 +38,9 @@ public class StudentDAOImpl implements StudentDAO {
 		sessionFactory.getCurrentSession().update(student);
 	}
 
-	public Student getStudent(int id) {
+	public Student getStudent(int studentID) {
 		return (Student) sessionFactory.getCurrentSession().get(Student.class,
-				id);
+				studentID);
 	}
 
 }

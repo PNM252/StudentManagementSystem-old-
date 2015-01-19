@@ -5,7 +5,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +19,7 @@ public class StudentController {
 	@Autowired
 	private StudentService studentService;
 
-	@RequestMapping("/index")
+	@RequestMapping("/StudentsList")
 	public String listStudents(Map<String, Object> map) {
 
 		map.put("student", new Student());
@@ -28,10 +27,20 @@ public class StudentController {
 
 		return "StudentsList";
 	}
+	
+	@RequestMapping("/TitlePage")
+	public String TitlePage() {
+		return "TitlePage";
+	}
 
 	@RequestMapping("/")
 	public String home() {
-		return "redirect:/index";
+		return "redirect:/TitlePage";
+	}
+	
+	@RequestMapping("/index")
+	public String index() {
+		return "redirect:/TitlePage";
 	}
 
 	@RequestMapping("/StudentCreating")
@@ -46,58 +55,36 @@ public class StudentController {
 		return "StudentModifying";
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addStudent(@ModelAttribute("student") Student student,
-			BindingResult result) {
+	@RequestMapping(value = "/addStudent", method = RequestMethod.POST)
+	public String addStudent(@ModelAttribute("student") Student student) {
 
 		studentService.addStudent(student);
 
-		return "redirect:/index";
+		return "redirect:/StudentsList";
 	}
 
-	@RequestMapping("/delete/{studentId}")
-	public String deleteStudent(@PathVariable("studentId") Integer studentId) {
+	@RequestMapping("/deleteStudent/{studentID}")
+	public String deleteStudent(@PathVariable("studentID") Integer studentId) {
 
 		studentService.removeStudent(studentId);
 
-		return "redirect:/index";
+		return "redirect:/StudentsList";
 	}
-	
-	
-	
-	
-	@RequestMapping(value = "/edit/{studentId}", method = RequestMethod.GET)
-	public String editStudent(@PathVariable("studentId") Integer id, Model model) {
 
-		model.addAttribute("student", studentService.getStudent(id));
+	@RequestMapping(value = "/editStudent/{studentID}", method = RequestMethod.GET)
+	public String editStudent(@PathVariable("studentID") Integer studentID, Model model) {
+
+		model.addAttribute("student", studentService.getStudent(studentID));
 
 		return "StudentModifying";
 	}
 
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveStudent(@ModelAttribute("student") Student student) {
+	@RequestMapping(value = "/saveStudent", method = RequestMethod.POST)
+	public String saveStudent(@ModelAttribute("student") Student student, Model model) {
 
 		this.studentService.editStudent(student);
 
-		return "redirect:/index";
+		return "redirect:/StudentsList";
 	}
-
-/*	 @RequestMapping(value = "/edit", method = RequestMethod.GET)
-	 public ModelAndView editStudent(@RequestParam("id") Integer id) {
-	 ModelAndView mav = new ModelAndView("StudentModifying");
-	 Student student = studentService.getStudent(id);
-	 mav.addObject("StudentModifying", student);
-	 return mav;
-	 }
-	
-	 @RequestMapping(value = "/edit", method = RequestMethod.POST)
-	 public String updateStudent(
-	 @ModelAttribute("StudentModifying") Student student,
-	 BindingResult result, SessionStatus status) {
-	 studentService.editStudent(student);
-	 status.setComplete();
-	 return "redirect:/index";
-	 }
-*/
 
 }
