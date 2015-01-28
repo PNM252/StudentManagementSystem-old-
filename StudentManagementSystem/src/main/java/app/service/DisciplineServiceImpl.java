@@ -28,7 +28,7 @@ public class DisciplineServiceImpl implements DisciplineService {
 	}
 
 	@Transactional
-	public void removeDiscipline(int id) {
+	public void removeDiscipline(Integer id) {
 		disciplineDAO.removeDiscipline(id);
 	}
 
@@ -38,7 +38,7 @@ public class DisciplineServiceImpl implements DisciplineService {
 	}
 
 	@Transactional
-	public Discipline getDiscipline(int disciplineID) {
+	public Discipline getDiscipline(Integer disciplineID) {
 
 		return disciplineDAO.getDiscipline(disciplineID);
 	}

@@ -27,7 +27,7 @@ public class TermServiceImpl implements TermService {
 	}
 
 	@Transactional
-	public void removeTerm(int termID) {
+	public void removeTerm(Integer termID) {
 		termDAO.removeTerm(termID);
 	}
 
@@ -37,7 +37,7 @@ public class TermServiceImpl implements TermService {
 	}
 
 	@Transactional
-	public Term getTerm(int termID) {
+	public Term getTerm(Integer termID) {
 		return termDAO.getTerm(termID);
 	}
 

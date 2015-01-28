@@ -10,9 +10,9 @@ public interface DisciplineService {
 	
 	public List<Discipline> listDiscipline();
 	
-	public void removeDiscipline (int id);
+	public void removeDiscipline (Integer id);
 	
 	public void editDiscipline(Discipline discipline);
 	
-	public Discipline getDiscipline(int disciplineID);
+	public Discipline getDiscipline(Integer disciplineID);
 }

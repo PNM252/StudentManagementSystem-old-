@@ -12,7 +12,7 @@ public interface TermDAO {
 	
 	public void editTerm(Term term);
 	
-	public void removeTerm(int termID);
+	public void removeTerm(Integer termID);
 	
-	public Term getTerm(int termID);
+	public Term getTerm(Integer termID);
 }

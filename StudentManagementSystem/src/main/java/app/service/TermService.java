@@ -10,10 +10,10 @@ public interface TermService {
 
 	public List<Term> listTerm();
 
-	public void removeTerm(int termID);
+	public void removeTerm(Integer termID);
 
 	public void editTerm(Term term);
 
-	public Term getTerm(int termID);
+	public Term getTerm(Integer termID);
 
 }

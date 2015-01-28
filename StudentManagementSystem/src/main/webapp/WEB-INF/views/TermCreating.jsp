@@ -25,9 +25,8 @@
 		</tr>
 		<tr>
 			<td>Дисциплины в семестре</td>
-			<td><form:select path="disciplines" multiple="true">
-					<form:option value="0" label="Select" />
-					<form:options items="${disciplineList}" itemLabel="disciplinename" />
+			<td><form:select path="disciplines" multiple="true"
+					items="${lists}" itemLabel="disciplinename">
 				</form:select></td>
 		</tr>
 

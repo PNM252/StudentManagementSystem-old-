@@ -28,7 +28,7 @@ public class TermDAOImpl implements TermDAO {
 		sessionFactory.getCurrentSession().update(term);
 	}
 
-	public void removeTerm(int termID) {
+	public void removeTerm(Integer termID) {
 		Term term = (Term) sessionFactory.getCurrentSession().load(Term.class,
 				termID);
 		if (null != term) {
@@ -37,7 +37,7 @@ public class TermDAOImpl implements TermDAO {
 		}
 	}
 
-	public Term getTerm(int termID) {
+	public Term getTerm(Integer termID) {
 		return (Term) sessionFactory.getCurrentSession()
 				.get(Term.class, termID);
 	}
