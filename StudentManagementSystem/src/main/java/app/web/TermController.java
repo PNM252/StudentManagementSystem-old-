@@ -1,14 +1,10 @@
 package app.web;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,31 +26,31 @@ public class TermController {
 	@Autowired
 	private DisciplineService disciplineService;
 
-	@InitBinder
-	protected void initBinder(WebDataBinder binder) {
-		binder.registerCustomEditor(List.class, "disciplines",
-				new CustomCollectionEditor(List.class) {
-
-					@Override
-					protected Object convertElement(Object element) {
-
-						Integer id = null;
-
-						if (element instanceof String
-								&& !((String) element).equals("")) {
-							try {
-								id = Integer.parseInt((String) element);
-							} catch (NumberFormatException e) {
-								e.printStackTrace();
-							}
-						} else if (element instanceof Integer) {
-							id = (Integer) element;
-						}
-
-						return id != null ? termService.getTerm(id) : null;
-					}
-				});
-	}
+	// @InitBinder
+	// protected void initBinder(WebDataBinder binder) {
+	// binder.registerCustomEditor(List.class, "disciplines",
+	// new CustomCollectionEditor(List.class) {
+	//
+	// @Override
+	// protected Object convertElement(Object element) {
+	//
+	// Integer id = null;
+	//
+	// if (element instanceof String
+	// && !((String) element).equals("")) {
+	// try {
+	// id = Integer.parseInt((String) element);
+	// } catch (NumberFormatException e) {
+	// e.printStackTrace();
+	// }
+	// } else if (element instanceof Integer) {
+	// id = (Integer) element;
+	// }
+	//
+	// return id != null ? termService.getTerm(id) : null;
+	// }
+	// });
+	// }
 
 	// @InitBinder
 	// public void initBinder(WebDataBinder binder, WebRequest request) {

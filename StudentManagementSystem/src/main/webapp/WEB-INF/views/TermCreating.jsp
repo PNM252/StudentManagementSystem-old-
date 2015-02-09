@@ -26,7 +26,7 @@
 		<tr>
 			<td>Дисциплины в семестре</td>
 			<td><form:select path="disciplines" multiple="true"
-					items="${lists}" itemLabel="disciplinename">
+					items="${disciplineList}" itemLabel="disciplinename">
 				</form:select></td>
 		</tr>
 
