@@ -21,10 +21,15 @@ public class Discipline {
 
 	@Column(name = "DISCIPLINENAME")
 	private String disciplinename;
+	
+	@ManyToMany(mappedBy="disciplines")
+	List<Term> term = new ArrayList<>();
 
-	@ManyToMany(mappedBy = "disciplines")
-	private List<Term> terms = new ArrayList<Term>();
-
+	@Override
+	public String toString(){
+		return getDisciplineID() + " " + getDisciplinename();
+	}
+	
 	public Integer getDisciplineID() {
 		return disciplineID;
 	}
@@ -39,14 +44,6 @@ public class Discipline {
 
 	public void setDisciplinename(String disciplinename) {
 		this.disciplinename = disciplinename;
-	}
-
-	public List<Term> getTerms() {
-		return terms;
-	}
-
-	public void setTerms(List<Term> terms) {
-		this.terms = terms;
 	}
 
 }

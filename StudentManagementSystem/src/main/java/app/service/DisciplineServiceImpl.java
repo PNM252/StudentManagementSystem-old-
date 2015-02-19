@@ -38,9 +38,9 @@ public class DisciplineServiceImpl implements DisciplineService {
 	}
 
 	@Transactional
-	public Discipline getDiscipline(Integer disciplineID) {
+	public Discipline getDisciplineById(Integer disciplineID) {
 
-		return disciplineDAO.getDiscipline(disciplineID);
+		return disciplineDAO.getDisciplineById(disciplineID);
 	}
 
 }

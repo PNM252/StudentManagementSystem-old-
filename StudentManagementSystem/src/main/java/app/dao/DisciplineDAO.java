@@ -12,9 +12,9 @@ public interface DisciplineDAO {
 	
 	public void editDiscipline(Discipline discipline);
 	
-	public void removeDiscipline(int id);
+	public void removeDiscipline(Integer id);
 	
-	public Discipline getDiscipline(int disciplineID);
+	public Discipline getDisciplineById(Integer disciplineID);
 	
 	
 }

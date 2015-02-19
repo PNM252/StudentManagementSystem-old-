@@ -6,8 +6,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -20,15 +23,19 @@ public class Term {
 	@GeneratedValue
 	private Integer termID;
 
-	@Column(name = "TERMNUMBER")
-	@GeneratedValue
-	private String termnumber;
-
 	@Column(name = "DURATION")
 	private String duration;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Discipline> disciplines = new ArrayList<Discipline>();
+	@ManyToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
+	@JoinTable(name="TERM_DISCIPLINE",
+    joinColumns={@JoinColumn(name="TERM_ID")},
+    inverseJoinColumns={@JoinColumn(name="DISCIPLINE_ID")})
+	private List<Discipline> disciplines = new ArrayList<>();
+	
+	@Override
+	public String toString() {
+		return getTermID() + " " + getDuration();
+    }
 
 	public Integer getTermID() {
 		return termID;
@@ -36,14 +43,6 @@ public class Term {
 
 	public void setTermID(Integer termID) {
 		this.termID = termID;
-	}
-
-	public String getTermnumber() {
-		return termnumber;
-	}
-
-	public void setTermnumber(String termnumber) {
-		this.termnumber = termnumber;
 	}
 
 	public String getDuration() {

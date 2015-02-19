@@ -14,6 +14,6 @@ public interface TermService {
 
 	public void editTerm(Term term);
 
-	public Term getTerm(Integer termID);
+	public Term getTermById(Integer termID);
 
 }

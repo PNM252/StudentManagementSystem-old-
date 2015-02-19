@@ -1,8 +1,8 @@
-
 package app.dao;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -26,7 +26,7 @@ public class DisciplineDAOImpl implements DisciplineDAO {
 				.createQuery("from Discipline").list();
 	}
 
-	public void removeDiscipline(int disciplineID) {
+	public void removeDiscipline(Integer disciplineID) {
 		Discipline discipline = (Discipline) sessionFactory.getCurrentSession()
 				.load(Discipline.class, disciplineID);
 		if (null != discipline) {
@@ -39,10 +39,14 @@ public class DisciplineDAOImpl implements DisciplineDAO {
 	}
 
 	@Override
-	public Discipline getDiscipline(int disciplineID) {
-
-		return (Discipline) sessionFactory.getCurrentSession().get(
-				Discipline.class, disciplineID);
+	@SuppressWarnings("unchecked")
+	public Discipline getDisciplineById(Integer disciplineID) {
+		Session session = sessionFactory.getCurrentSession();
+		List<Discipline> list = session
+				.createQuery(
+						"from Discipline d where d.disciplineID = :disciplineID")
+				.setParameter("disciplineID", disciplineID).list();
+		return list.size() > 0 ? (Discipline) list.get(0) : null;
 	}
 
 }
