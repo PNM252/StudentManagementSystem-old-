@@ -19,22 +19,22 @@
 		успеваемостью</h1>
 
 	<form:form method="post" action="addTerm" commandName="term">
-		<tr>
-			<td>Длительность (в неделях)</td>
-			<td><form:input path="duration" /></td>
-		</tr>
-		<tr>
-			<td>Дисциплины в семестре</td>
-			<td><form:select path="disciplines" multiple="true"
-					items="${disciplineList}" itemLabel="disciplinename">
-				</form:select></td>
-		</tr>
+		<table>
+			<tr>
+				<td>Длительность (в неделях)</td>
+				<td><form:input path="duration" /></td>
+			</tr>
+			<tr>
+				<td>Дисциплины в семестре</td>
+				<td><form:select path="disciplines" multiple="true"
+						items="${disciplineList}" itemLabel="disciplinename" itemValue="disciplineID">
+					</form:select></td>
+			</tr>
 
-		<tr>
-			<td colspan="2"><input type="submit" value="Сохранить" /></td>
-		</tr>
-
-
+			<tr>
+				<td><input type="submit" value="Сохранить" />
+			</tr>
+		</table>
 	</form:form>
 
 

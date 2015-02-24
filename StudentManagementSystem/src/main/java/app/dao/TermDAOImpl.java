@@ -2,7 +2,6 @@ package app.dao;
 
 import java.util.List;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -42,14 +41,8 @@ public class TermDAOImpl implements TermDAO {
 		}
 	}
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public Term getTermById(Integer termID) {
-		Session session = sessionFactory.getCurrentSession();
-		List<Term> list = session
-				.createQuery("from Term t where t.termID = :termID")
-				.setParameter("termID", termID).list();
-		return list.size() > 0 ? (Term) list.get(0) : null;
+	public Term getTerm(Integer termID) {
+		return (Term) sessionFactory.getCurrentSession()
+				.get(Term.class, termID);
 	}
-
 }

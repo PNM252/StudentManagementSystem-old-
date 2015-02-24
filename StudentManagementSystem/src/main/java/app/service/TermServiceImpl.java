@@ -37,8 +37,8 @@ public class TermServiceImpl implements TermService {
 	}
 
 	@Transactional
-	public Term getTermById(Integer termID) {
-		return termDAO.getTermById(termID);
+	public Term getTerm(Integer termID) {
+		return termDAO.getTerm(termID);
 	}
 
 }

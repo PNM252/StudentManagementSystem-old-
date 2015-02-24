@@ -59,7 +59,7 @@ public class DisciplineController {
 	@RequestMapping(value = "/editDiscipline/{disciplineID}", method = RequestMethod.GET)
 	public String editDiscipline(@PathVariable("disciplineID") Integer disciplineID, Model model) {
 		
-		model.addAttribute("discipline", disciplineService.getDisciplineById(disciplineID));
+		model.addAttribute("discipline", disciplineService.getDiscipline(disciplineID));
 		
 		return "DisciplineModifying";
 	}

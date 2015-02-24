@@ -1,14 +1,9 @@
 package app.web;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,38 +24,41 @@ public class TermController {
 
 	@Autowired
 	private DisciplineService disciplineService;
+	
+	
 
-	@InitBinder
-	protected void initBinder(WebDataBinder binder) {
-		binder.registerCustomEditor(List.class, "disciplines",
-				new CustomCollectionEditor(List.class) {
-
-					@Override
-					protected Object convertElement(Object element) {
-
-						Integer id = null;
-
-						if (element instanceof String
-								&& !((String) element).equals("")) {
-							System.out.println("Test 1");
-							try {
-								System.out.println("Test 2");
-								id = Integer.parseInt((String) element);
-
-							} catch (NumberFormatException e) {
-								System.out.println("Test 3");
-								e.printStackTrace();
-							}
-						} else if (element instanceof Integer) {
-							System.out.println("Test 4");
-							id = (Integer) element;
-						}
-
-						return id != null ? disciplineService
-								.getDisciplineById(id) : null;
-					}
-				});
-	}
+	// @InitBinder
+	// protected void initBinder(WebDataBinder binder) {
+	// binder.registerCustomEditor(List.class, "disciplines",
+	// new CustomCollectionEditor(List.class) {
+	//
+	// @Override
+	// protected Object convertElement(Object element) {
+	//
+	// Integer id = null;
+	//
+	// if (element instanceof String
+	// && !((String) element).equals("")) {
+	// System.out.println("Test 1");
+	// try {
+	// System.out.println("Test 2");
+	// id = Integer.parseInt((String) element);
+	//
+	// } catch (NumberFormatException e) {
+	// System.out.println("Test 3");
+	// e.printStackTrace();
+	// }
+	// } else if (element instanceof Integer) {
+	// System.out.println("Test 4");
+	// id = (Integer) element;
+	// }
+	//
+	// return id != null ? disciplineService
+	// .getDisciplineById(id) : null;
+	// }
+	// });
+	// }
+	
 
 	@RequestMapping("/TermsList")
 	public String listTerms(ModelMap map) {
@@ -105,7 +103,7 @@ public class TermController {
 	@RequestMapping(value = "/editTerm/{termID}", method = RequestMethod.GET)
 	public String editTerm(@PathVariable("termID") Integer termID, Model model) {
 
-		model.addAttribute("term", termService.getTermById(termID));
+		model.addAttribute("term", termService.getTerm(termID));
 
 		return "TermModifying";
 	}

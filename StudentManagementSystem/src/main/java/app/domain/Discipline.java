@@ -3,8 +3,10 @@ package app.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -22,8 +24,8 @@ public class Discipline {
 	@Column(name = "DISCIPLINENAME")
 	private String disciplinename;
 	
-	@ManyToMany(mappedBy="disciplines")
-	List<Term> term = new ArrayList<>();
+	@ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER, mappedBy = "disciplines")
+	List<Term> term = new ArrayList<Term>();
 
 	@Override
 	public String toString(){

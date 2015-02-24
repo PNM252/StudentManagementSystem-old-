@@ -14,5 +14,5 @@ public interface TermDAO {
 	
 	public void removeTerm(Integer termID);
 	
-	public Term getTermById(Integer termID);
+	public Term getTerm(Integer termID);
 }

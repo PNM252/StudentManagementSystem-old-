@@ -1,6 +1,5 @@
 package app.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,11 +25,11 @@ public class Term {
 	@Column(name = "DURATION")
 	private String duration;
 
-	@ManyToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name="TERM_DISCIPLINE",
     joinColumns={@JoinColumn(name="TERM_ID")},
     inverseJoinColumns={@JoinColumn(name="DISCIPLINE_ID")})
-	private List<Discipline> disciplines = new ArrayList<>();
+	List<Discipline> disciplines;
 	
 	@Override
 	public String toString() {

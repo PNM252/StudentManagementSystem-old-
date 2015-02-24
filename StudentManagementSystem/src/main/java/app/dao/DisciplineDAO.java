@@ -14,7 +14,7 @@ public interface DisciplineDAO {
 	
 	public void removeDiscipline(Integer id);
 	
-	public Discipline getDisciplineById(Integer disciplineID);
+	public Discipline getDiscipline(Integer disciplineID);
 	
 	
 }

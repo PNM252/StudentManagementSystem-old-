@@ -14,5 +14,5 @@ public interface DisciplineService {
 	
 	public void editDiscipline(Discipline discipline);
 	
-	public Discipline getDisciplineById(Integer disciplineID);
+	public Discipline getDiscipline(Integer disciplineID);
 }
